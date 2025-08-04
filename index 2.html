@@ -1,0 +1,161 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>ClearThink – Rational Thinking Companion</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f5f7fa;
+      color: #212529;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    header {
+      background-color: #ffffff;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    main {
+      padding: 20px;
+      flex: 1;
+    }
+    section {
+      margin-bottom: 2rem;
+    }
+    .card {
+      background: white;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+    }
+    input, textarea, button {
+      width: 100%;
+      font-size: 1em;
+      padding: 10px;
+      margin-top: 10px;
+      box-sizing: border-box;
+    }
+    button {
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      margin-top: 15px;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    footer {
+      text-align: center;
+      padding: 10px;
+      font-size: 0.8em;
+      color: #6c757d;
+    }
+    .disclaimer {
+      background: #fff3cd;
+      border: 1px solid #ffeeba;
+      color: #856404;
+      padding: 10px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>ClearThink</h1>
+    <p>Your Rational Thinking Companion</p>
+  </header>
+  <main>
+    <div class="disclaimer">
+      <strong>Important:</strong> ClearThink is not a medical or therapeutic service. If you are in crisis or feeling unsafe, please contact a professional or emergency services immediately.
+    </div>
+
+    <section class="card">
+      <h2>🧠 Bias Checker</h2>
+      <p>Write a thought you’re struggling with:</p>
+      <textarea id="thought" rows="4" placeholder="e.g., I always mess things up..."></textarea>
+      <button onclick="checkBias()">Check for Bias</button>
+      <div id="biasResult" style="margin-top: 15px; font-weight: bold;"></div>
+    </section>
+
+    <section class="card">
+      <h2>🔄 Reframe Coach</h2>
+      <p>We’ll help you reframe a negative thought rationally.</p>
+      <button onclick="reframeThought()">Reframe</button>
+      <div id="reframeResult" style="margin-top: 15px;"></div>
+    </section>
+  </main>
+  <footer>
+    © 2025 ClearThink. Not a replacement for professional mental health care.
+  </footer>
+
+  <script>
+    function checkBias() {
+      const thought = document.getElementById('thought').value.toLowerCase().trim();
+      if (!thought) {
+        document.getElementById('biasResult').textContent = "Please enter a thought before checking.";
+        return;
+      }
+      let result = "This seems like a balanced thought.";
+      if (thought.includes("always") || thought.includes("never")) {
+        result = "⚠️ Possible 'all-or-nothing thinking'";
+      } else if (thought.includes("should")) {
+        result = "⚠️ Possible 'should statement'";
+      } else if (thought.includes("everyone") || thought.includes("nobody")) {
+        result = "⚠️ Possible overgeneralization";
+      } else if (thought.includes("my fault")) {
+        result = "⚠️ Possible personalization";
+      }
+      document.getElementById('biasResult').textContent = result;
+    }
+
+    function reframeThought() {
+      const frames = [
+        "Try viewing this as a learning experience rather than a failure.",
+        "What would you tell a friend feeling the same way?",
+        "Consider what part of this thought may not be entirely true.",
+        "What would a compassionate outsider say about this?",
+        "In five years, how significant will this feel?"
+      ];
+      const randomFrame = frames[Math.floor(Math.random() * frames.length)];
+      document.getElementById('reframeResult').textContent = `💡 ${randomFrame}`;
+    }
+  </script>
+</body>
+</html>
+️ Possible 'should statement'";
+      } else if (thought.includes("everyone") || thought.includes("nobody")) {
+        result = "⚠️ Possible overgeneralization";
+      } else if (thought.includes("my fault") || thought.includes("i'm to blame")) {
+        result = "⚠️ Possible personalization";
+      } else if (thought.includes("i can't") || thought.includes("i will fail")) {
+        result = "⚠️ Possible catastrophizing";
+      }
+      document.getElementById('biasResult').textContent = result;
+    }
+
+    function reframeThought() {
+      const frames = [
+        "Try viewing this as a learning experience rather than a failure.",
+        "Consider what you'd say to a friend in the same situation.",
+        "Is there evidence that contradicts this thought?",
+        "What’s a more balanced or realistic perspective?",
+        "How would this look to you a year from now?",
+        "Can you separate facts from assumptions?"
+      ];
+      const randomFrame = frames[Math.floor(Math.random() * frames.length)];
+      document.getElementById('reframeResult').textContent = `💡 ${randomFrame}`;
+    }
+  </script>
+</body>
+</html>
